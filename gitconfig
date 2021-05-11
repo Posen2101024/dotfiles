@@ -1,0 +1,5 @@
+[alias]
+  tree = log --all --decorate --oneline --graph
+[user]
+  email = posen2101024@gmail.com
+  name = Posen
