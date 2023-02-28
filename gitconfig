@@ -1,5 +1,7 @@
 [alias]
   tree = log --all --decorate --oneline --graph
+[core]
+  editor = vim
 [user]
   email = posen2101024@gmail.com
   name = Posen

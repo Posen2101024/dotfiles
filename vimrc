@@ -1,18 +1,3 @@
-let vim_plug_file=expand('~/.vim/autoload/plug.vim')
-
-if !filereadable(vim_plug_file)
-  silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-  :source ~/.vimrc
-  :PlugInstall
-  :q
-endif
-
-nmap <F1> :source ~/.vimrc<cr>:PlugUpdate<cr>
-nmap <F2> :PlugDiff<cr>
-nmap <F3> :PlugStatus<cr>
-nmap <F4> :PlugClean<cr>
-nmap <F12> :!curl -fLo ~/.vimrc --create-dirs https://raw.githubusercontent.com/Posen2101024/dotfiles/master/vimrc<cr>:source ~/.vimrc<cr>
-
 silent! if plug#begin('~/.vim/plugged')
 
 Plug 'airblade/vim-gitgutter'
@@ -20,19 +5,10 @@ Plug 'airblade/vim-gitgutter'
 
 Plug 'bfrg/vim-cpp-modern'
   let g:cpp_attributes_highlight = 1
-  let g:cpp_member_highlight = 1
-  let g:cpp_simple_highlight = 1
+  let g:cpp_member_highlight     = 1
+  let g:cpp_simple_highlight     = 1
 
 Plug 'chr4/nginx.vim'
-
-" Plug 'dracula/vim', { 'as': 'dracula' }
-"   let g:dracula_bold = 0
-"   let g:dracula_italic = 1
-"   let g:dracula_underline = 1
-"   let g:dracula_undercurl = 1
-"   let g:dracula_full_special_attrs_support = 1
-"   let g:dracula_inverse = 1
-"   let g:dracula_colorterm = 1
 
 Plug 'ervandew/supertab'
   let g:SuperTabCrMapping             = 1
@@ -60,13 +36,6 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
 Plug 'mhinz/vim-startify'
 
-" Plug 'sainnhe/gruvbox-material'
-"   let g:gruvbox_material_better_performance     = 1
-"   let g:gruvbox_material_background             = 'hard'
-"   let g:gruvbox_material_foreground             = 'material'
-"   let g:gruvbox_material_visual                 = 'reverse'
-"   " let g:gruvbox_material_transparent_background = 1
-
 Plug 'pangloss/vim-javascript'
 
 Plug 'plasticboy/vim-markdown'
@@ -75,13 +44,13 @@ Plug 'plasticboy/vim-markdown'
   let g:vim_markdown_folding_disabled    = 1
 
 Plug 'preservim/nerdtree'
-  let NERDTreeWinSize=30
-  let NERDTreeWinPos='right'
+  let NERDTreeWinSize = 30
+  let NERDTreeWinPos  = 'right'
   nmap <tab> :NERDTreeMirror<cr>:NERDTreeToggle<cr>
 
 Plug 'tomasr/molokai'
   let g:molokai_original = 1
-  let g:rehash256 = 1
+  let g:rehash256        = 1
 
 Plug 'towolf/vim-helm'
 
@@ -115,8 +84,6 @@ Plug 'vim-airline/vim-airline'
   let g:airline_symbols.branch = '⎇'
 
 Plug 'vim-airline/vim-airline-themes'
-  " let g:airline_theme = 'dracula'
-  " let g:airline_theme = 'gruvbox_material'
   let g:airline_theme = 'molokai'
 
 Plug 'vim-python/python-syntax'
@@ -132,14 +99,13 @@ Plug 'vim-python/python-syntax'
 "   let g:syntastic_warning_symbol = 'W>'
 "   let g:syntastic_style_warning_symbol = 'W>'
 
-
 Plug 'Yggdroot/indentLine'
-  let g:indentLine_char_list  = ['|', '¦', '┆', '┊']
-  let g:indentLine_color_term = 239
-  let g:indentLine_enabled    = 1
-  " let g:indentLine_setConceal = 0
-  let g:markdown_syntax_conceal=0
-  let g:vim_json_conceal=0
+  let g:indentLine_char_list    = ['|', '¦', '┆', '┊']
+  let g:indentLine_color_term   = 239
+  let g:indentLine_enabled      = 1
+  " let g:indentLine_setConceal   = 0
+  let g:markdown_syntax_conceal = 0
+  let g:vim_json_conceal        = 0
 
 call plug#end()
 endif
@@ -169,30 +135,21 @@ set sidescroll=1
 set softtabstop=4
 set tabstop=4
 set timeoutlen=1000
-set ttimeoutlen=1
+set ttimeoutlen=0
 set t_Co=256
 
-try
-  " colorscheme dracula
-  " colorscheme gruvbox-material
-  colorscheme molokai
-  catch
-endtry
+colorscheme molokai
+filetype plugin indent on
+syntax on
 
 if has('termguicolors')
   set termguicolors
 endif
 
-filetype plugin indent on
-syntax on
-
-highlight link GitGutterChangeLine DiffText
-highlight GitGutterAdd    guifg=#009900 ctermfg=2
-highlight GitGutterChange guifg=#bbbb00 ctermfg=3
-highlight GitGutterDelete guifg=#ff2222 ctermfg=1
-autocmd BufWritePost * GitGutter
-
-nnoremap <s-tab> :set number!<cr>:set list!<cr>:IndentLinesToggle<cr>:GitGutterToggle<cr>
+nmap <F1> :PlugUpdate<cr>
+nmap <F2> :PlugDiff<cr>
+nmap <F3> :PlugStatus<cr>
+nmap <F4> :PlugClean<cr>
 
 noremap , <c-e>
 noremap ; <c-y>
@@ -212,6 +169,14 @@ noremap <leader>7 7gt
 noremap <leader>8 8gt
 noremap <leader>9 9gt
 noremap <leader>0 :tabmove -1<cr>
+
+nnoremap <s-tab> :set number!<cr>:set list!<cr>:IndentLinesToggle<cr>:GitGutterToggle<cr>
+
+highlight link GitGutterChangeLine DiffText
+highlight GitGutterAdd    guifg=#009900 ctermfg=2
+highlight GitGutterChange guifg=#bbbb00 ctermfg=3
+highlight GitGutterDelete guifg=#ff2222 ctermfg=1
+autocmd BufWritePost * GitGutter
 
 autocmd BufNewFile,BufRead Dockerfile*  set filetype=dockerfile
 autocmd BufNewFile,BufRead Jenkinsfile* set filetype=Jenkinsfile
@@ -239,6 +204,3 @@ autocmd FileType sh         imap <buffer> <F5> <esc>:w<cr>:! /bin/bash %<cr>
 
 autocmd FileType cpp         map <buffer> <F8>      :w<cr>:! g++ -std=c++11 -o %:r %<cr><cr>
 autocmd FileType cpp        imap <buffer> <F8> <esc>:w<cr>:! g++ -std=c++11 -o %:r %<cr><cr>
-
-command! ToggleMouse if empty(&mouse) | set mouse=a | else | set mouse= | endif
-nnoremap <F11> :ToggleMouse<cr>
