@@ -36,6 +36,8 @@ Plug 'mbbill/undotree', { 'on': 'UndotreeToggle' }
 
 Plug 'mhinz/vim-startify'
 
+Plug 'neoclide/jsonc.vim'
+
 Plug 'pangloss/vim-javascript'
 
 Plug 'plasticboy/vim-markdown'
@@ -136,6 +138,7 @@ set softtabstop=4
 set tabstop=4
 set timeoutlen=1000
 set ttimeoutlen=0
+set t_BE=
 set t_Co=256
 
 colorscheme molokai
@@ -189,6 +192,7 @@ autocmd Filetype Jenkinsfile setlocal commentstring=//\ %s softtabstop=2 shiftwi
 autocmd Filetype make        setlocal commentstring=#\ %s  noexpandtab
 autocmd Filetype nginx       setlocal commentstring=#\ %s
 autocmd FileType python      setlocal commentstring=#\ %s
+autocmd Filetype typescript  setlocal commentstring=//\ %s softtabstop=2 shiftwidth=2
 autocmd Filetype vim         setlocal commentstring=\"\ %s softtabstop=2 shiftwidth=2
 autocmd Filetype vue         setlocal commentstring=<!--\ %s\ --> softtabstop=2 shiftwidth=2
 autocmd Filetype yaml        setlocal commentstring=#\ %s  softtabstop=2 shiftwidth=2
@@ -201,6 +205,10 @@ autocmd FileType python      map <buffer> <F5>      :w<cr>:! python3 %<cr>
 autocmd FileType python     imap <buffer> <F5> <esc>:w<cr>:! python3 %<cr>
 autocmd FileType sh          map <buffer> <F5>      :w<cr>:! /bin/bash %<cr>
 autocmd FileType sh         imap <buffer> <F5> <esc>:w<cr>:! /bin/bash %<cr>
+autocmd FileType typescript  map <buffer> <F5>      :w<cr>:! tsc --strict --noEmit %<cr>
+autocmd FileType typescript imap <buffer> <F5> <esc>:w<cr>:! tsc --strict --noEmit %<cr>
 
 autocmd FileType cpp         map <buffer> <F8>      :w<cr>:! g++ -std=c++11 -o %:r %<cr><cr>
 autocmd FileType cpp        imap <buffer> <F8> <esc>:w<cr>:! g++ -std=c++11 -o %:r %<cr><cr>
+autocmd FileType typescript  map <buffer> <F8>      :w<cr>:! tsc<cr>
+autocmd FileType typescript imap <buffer> <F8> <esc>:w<cr>:! tsc<cr>
